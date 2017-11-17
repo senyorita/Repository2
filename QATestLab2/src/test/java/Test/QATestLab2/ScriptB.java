@@ -1,5 +1,8 @@
 package Test.QATestLab2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,45 +39,25 @@ public class ScriptB extends DriverChrome {
 		buttonWeb.click();
 
 		waitTest();
-
-		WebElement dashboardWeb = driver.findElement(By.xpath("//*[@id='tab-AdminDashboard']/a"));
-		getTitle(dashboardWeb, driver);
-
-		WebElement zakaziWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminParentOrders']/a"));
-		getTitle(zakaziWeb, driver);
-
-		WebElement katalogWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminCatalog']/a"));
-		getTitle(katalogWeb, driver);
-
-		WebElement clientyWeb = driver.findElement(By.xpath("/html/body/nav/ul/li[5]/a"));
-		getTitle(clientyWeb, driver);
-
-		WebElement tehsupportWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminParentCustomerThreads']/a"));
-		getTitle(tehsupportWeb, driver);
-
-		WebElement statistikaWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminStats']/a"));
-		getTitle(statistikaWeb, driver);
-
-		WebElement modulesWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminParentModulesSf']/a"));
-		getTitle(modulesWeb, driver);
-
-		WebElement designWeb = driver.findElement(By.xpath("/html/body/nav/ul/li[10]/a"));
-		getTitle(designWeb, driver);
-
-		WebElement deliveryWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminParentShipping']/a"));
-		getTitle(deliveryWeb, driver);
-
-		WebElement paymentWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminParentPayment']/a"));
-		getTitle(paymentWeb, driver);
-
-		WebElement internationalWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminInternational']/a"));
-		getTitle(internationalWeb, driver);
-
-		WebElement shopParametersWeb = driver.findElement(By.xpath("//*[@id='subtab-ShopParameters']/a"));
-		getTitle(shopParametersWeb, driver);
-
-		WebElement configurationWeb = driver.findElement(By.xpath("//*[@id='subtab-AdminAdvancedParameters']/a"));
-		getTitle(configurationWeb, driver);
+		
+		List<String> listMenu = new ArrayList<String>();
+		listMenu.add("Dashboard");
+		listMenu.add("Заказы");
+		listMenu.add("Каталог");
+		listMenu.add("Клиенты");
+		listMenu.add("Служба поддержки");
+		listMenu.add("Статистика");
+		listMenu.add("Modules");
+		listMenu.add("Design");
+		listMenu.add("Доставка");
+		listMenu.add("Способ оплаты");
+		listMenu.add("International");
+		listMenu.add("Shop Parameters");
+		listMenu.add("Конфигурация");
+		
+		for(int i = 0; i < listMenu.size(); i++){
+			getTitle(driver.findElement(By.linkText(listMenu.get(i))), driver);
+		}
 
 		driver.quit();
 

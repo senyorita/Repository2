@@ -21,7 +21,8 @@ public class ScriptA extends DriverChrome {
 
 		waitTest();
 
-		WebElement userWeb = driver.findElement(By.xpath("//*[@id='employee_infos']/a/span/img"));
+		//WebElement userWeb = driver.findElement(By.xpath("//a[@class='employee_name dropdown-toggle']"));
+		WebElement userWeb = driver.findElement(By.id("employee_infos"));
 		userWeb.click();
 
 		WebElement outWeb = driver.findElement(By.id("header_logout"));
